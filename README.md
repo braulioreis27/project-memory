@@ -130,10 +130,106 @@ Certifique-se de ter os seguintes softwares instalados:
 
 ## Configuração do Backend
 
+```bash
+project-memory/
+│
+├── backend/
+│ ├── src/main/java/com/example/projectmemory/
+│ │ ├── controller/
+│ │ │ └── ColaboradorController.java
+│ │ ├── model/
+│ │ │ └── Colaborador.java
+│ │ ├── repository/
+│ │ │ └── ColaboradorRepository.java
+│ │ ├── service/
+│ │ │ └── ColaboradorService.java
+│ │ └── ProjectMemoryApplication.java
+│ ├── src/main/resources/
+│ │ ├── application.properties
+│ └── pom.xml
+│
+├── frontend/
+│ ├── src/
+│ │ ├── app/
+│ │ │ ├── colaborador-list/
+│ │ │ │ ├── colaborador-list.component.ts
+│ │ │ │ ├── colaborador-list.component.html
+│ │ │ │ ├── colaborador-list.component.css
+│ │ │ ├── colaborador-detail/
+│ │ │ │ ├── colaborador-detail.component.ts
+│ │ │ │ ├── colaborador-detail.component.html
+│ │ │ │ ├── colaborador-detail.component.css
+│ │ │ ├── colaborador-form/
+│ │ │ │ ├── colaborador-form.component.ts
+│ │ │ │ ├── colaborador-form.component.html
+│ │ │ │ ├── colaborador-form.component.css
+│ │ │ ├── models/
+│ │ │ │ └── colaborador.model.ts
+│ │ │ ├── services/
+│ │ │ │ └── colaborador.service.ts
+│ │ │ ├── app-routing.module.ts
+│ │ │ ├── app.component.ts
+│ │ │ ├── app.component.html
+│ │ │ ├── app.component.css
+│ │ │ └── app.module.ts
+│ ├── package.json
+│ ├── angular.json
+│ ├── tsconfig.json
+│ └── README.md
+```
+
 ### 1. Clonar o Repositório
 
 ```bash
 git clone https://github.com/seu_usuario/project-memory.git
 cd project-memory/backend
+```
 
+### 2. Configurar o Banco de Dados
+Crie a tabela no PostgreSQL:
+
+Autenticação do Banco de Dados
+
+```bash
+postgresql://localhost:5432/projectmemory
+username=postgress
+password=postgres
+```
+
+```bash
+CREATE TABLE colaboradores (
+    id SERIAL PRIMARY KEY,
+    cpf VARCHAR(14) NOT NULL UNIQUE,
+    nome VARCHAR(100) NOT NULL,
+    data_admissao DATE NOT NULL,
+    funcao VARCHAR(50) NOT NULL,
+    remuneracao DECIMAL(10, 2) NOT NULL,
+    gerente_id INTEGER,
+    CONSTRAINT fk_gerente
+      FOREIGN KEY (gerente_id)
+      REFERENCES colaboradores(id)
+      ON DELETE SET NULL
+);
+```
+### 3. Configurar o application.properties
+Edite o arquivo src/main/resources/application.properties com as configurações do seu banco de dados:
+
+```bash
+spring.datasource.url=jdbc:postgresql://localhost:5432/projectmemory
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+### 4. Construir e Executar o Backend
+
+```bash
+mvn clean install
+mvn spring-boot:run
+```
+O servidor backend estará rodando em http://localhost:8080.
+
+### Uso
+Navegue até http://localhost:4200 no seu navegador.
+Utilize a aplicação para gerenciar os colaboradores, incluindo adicionar, listar, visualizar detalhes e editar colaboradores.
 
