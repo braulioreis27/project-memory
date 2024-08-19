@@ -233,3 +233,94 @@ O servidor backend estará rodando em http://localhost:8080.
 Navegue até http://localhost:4200 no seu navegador.
 Utilize a aplicação para gerenciar os colaboradores, incluindo adicionar, listar, visualizar detalhes e editar colaboradores.
 
+### Critérios de Priorização
+Os critérios de priorização foram estabelecidos para garantir que as funcionalidades mais essenciais fossem desenvolvidas e testadas primeiro, assegurando a viabilidade do projeto dentro do prazo estipulado. Os critérios incluem:
+
+- [x] 1. Funcionalidades Essenciais:
+Funcionalidades básicas de CRUD para colaboradores, essenciais para o funcionamento do sistema.
+- [x] 2. Estabilidade do Sistema: 
+Foco na implementação de um backend robusto e confiável, garantindo que a API funcione corretamente.
+- [x] 3. Experiência do Usuário: 
+Desenvolver um frontend intuitivo e fácil de usar, para que os usuários possam interagir com o sistema sem dificuldades.
+- [x] 4. Segurança: 
+Implementação de práticas básicas de segurança, como validação de dados e controle de acesso.
+Documentação: Garantir que toda a documentação necessária esteja disponível e clara, facilitando a manutenção e futuras expansões do sistema.
+
+### Impedimentos
+Durante o desenvolvimento do projeto, alguns impedimentos foram encontrados:
+- Erro de Conexão com o Banco de Dados: Houve dificuldades iniciais para configurar corretamente a conexão com o PostgreSQL.
+- Configurações do Ambiente: Garantir que todas as dependências e configurações de ambiente estivessem corretas para cada membro da equipe.
+- Integração entre Frontend e Backend: Alguns desafios surgiram na integração das duas partes do sistema, especialmente em relação ao CORS e roteamento de API.
+- Erros de Compilação: Problemas com versões de compiladores e dependências causaram atrasos.
+
+## Resolução de Erro no Backend
+Se o backend não está acessando o banco de dados corretamente, alguns passos podem ser seguidos para diagnosticar e resolver o problema.
+
+## Verificar Configurações do Banco de Dados
+1. Arquivo application.properties: Certifique-se de que as configurações estão corretas.
+
+```bash
+spring.datasource.url=jdbc:postgresql://localhost:5432/projectmemory
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+2. Conexão com o Banco de Dados: Teste a conexão com o banco de dados usando ferramentas como pgAdmin ou psql.
+   
+### Logs de Erro
+1. Verifique os logs gerados pelo Spring Boot. Eles geralmente fornecem detalhes sobre o motivo da falha na conexão com o banco de dados.
+2. Adicione propriedades de log para capturar mais detalhes:
+
+```bash
+logging.level.org.springframework=DEBUG
+logging.level.com.example.projectmemory=DEBUG
+```
+### Dependências do Maven
+1. Verifique se todas as dependências necessárias estão incluídas no ***pom.xml.***
+   
+```bash
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <scope>runtime</scope>
+</dependency>
+```
+### Exemplo de Classe de Configuração
+Certifique-se de que a configuração da classe Colaborador está correta:
+
+```bash
+@Entity
+public class Colaborador {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true)
+    private String cpf;
+
+    @Column(nullable = false)
+    private String nome;
+
+    @Column(nullable = false)
+    private LocalDate dataAdmissao;
+
+    @Column(nullable = false)
+    private String funcao;
+
+    @Column(nullable = false)
+    private BigDecimal remuneracao;
+
+    @ManyToOne
+    @JoinColumn(name = "gerente_id")
+    private Colaborador gerente;
+
+    // Getters and Setters
+}
+```
+### Resumo
+Ao seguir estes passos e verificações, você deve ser capaz de diagnosticar e resolver os problemas de conexão do backend com o banco de dados. Certifique-se de verificar cada etapa cuidadosamente e ajustar conforme necessário para o seu ambiente específico. Se os problemas persistirem, considere buscar ajuda em fóruns de desenvolvedores ou consultando a documentação oficial do Spring Boot e PostgreSQL.
