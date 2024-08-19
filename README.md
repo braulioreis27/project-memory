@@ -103,63 +103,37 @@ Use esse texto como um checklist! Principalmente os itens destacados como tal, a
 **Sucesso no teste!** :smile:
 
 
+# Project Memory
 
-# CRIAÇÃO DO PROJETO 
+## Descrição do Projeto
 
-
-# Desafio Técnico: Sistema de Gerenciamento de Funcionários
-
-## Introdução
-Este projeto foi desenvolvido como parte do processo seletivo para a vaga de Desenvolvedor de Software. O objetivo é demonstrar minhas habilidades em desenvolvimento de software, utilizando as tecnologias especificadas.
+O projeto **Project Memory** é um sistema de gerenciamento de colaboradores desenvolvido com backend em Java usando Spring Boot, frontend em Angular e banco de dados PostgreSQL. O objetivo deste projeto é permitir a criação, leitura, atualização e exclusão (CRUD) de informações de colaboradores.
 
 ## Tecnologias Utilizadas
-* **Backend:** Java, Spring Boot, PostgreSQL
-* **Frontend:** Angular 2
 
-## Funcionalidades Implementadas
-* **CRUD de Colaboradores:** Criação, leitura, atualização e deleção de registros de colaboradores.
-* **Pesquisa por Ano de Admissão:** Consulta de colaboradores admitidos em um determinado ano.
-* **Relacionamentos:** Implementação da hierarquia entre gerentes e subordinados.
-* **Paginação:** Implementação de paginação em todas as consultas para otimizar a performance.
-* **[Outras funcionalidades implementadas]**
+- **Backend**: Java, Spring Boot
+- **Frontend**: Angular
+- **Banco de Dados**: PostgreSQL
 
 ## Estrutura do Projeto
-* **[Explique a estrutura de pastas e arquivos do projeto]**
-* **[Diagrama de classes ou UML, se aplicável]**
 
-## Instruções de Instalação e Execução
-* **[Passo a passo de como clonar o repositório, configurar o ambiente e executar a aplicação]**
 
-## Dificuldades Encontradas e Soluções
-* **[Descreva os desafios enfrentados durante o desenvolvimento e como foram resolvidos]**
+## Pré-requisitos
 
-## Considerações Finais
-* **[Faça uma breve análise do projeto e destaque os pontos que considera mais relevantes]**
+Certifique-se de ter os seguintes softwares instalados:
 
-## Próximos Passos
-* **[Mencione possíveis melhorias ou funcionalidades adicionais que poderiam ser implementadas]**
+- Java JDK 17 ou superior
+- Maven
+- Node.js e npm
+- Angular CLI
+- PostgreSQL
 
-## Vídeo Demonstrativo
-* **[Link para o vídeo no WeTransfer]**
+## Configuração do Backend
 
-## Licença
-* **[Indique a licença utilizada para o projeto]**
+### 1. Clonar o Repositório
 
-**Observações:**
+```bash
+git clone https://github.com/seu_usuario/project-memory.git
+cd project-memory/backend
 
-* **Personalize** este README com informações específicas do seu projeto.
-* **Inclua** screenshots ou diagramas para facilitar o entendimento.
-* **Utilize** markdown para formatar o texto e criar uma estrutura clara e organizada.
 
-**Dicas Adicionais:**
-
-* **Commits:** Faça commits frequentes e com mensagens claras e concisas.
-* **Testes:** Inclua testes unitários para garantir a qualidade do código.
-* **Documentação:** Documente o código e a API utilizando comentários e ferramentas como o Swagger.
-* **Código Limpo:** Siga as boas práticas de programação para facilitar a manutenção do código.
-
-Ao seguir estas orientações, você aumentará suas chances de sucesso no desafio técnico.
- 
-**Lembre-se:** Este é apenas um modelo. Adapte-o às suas necessidades e ao seu projeto.
- 
-**Precisa de mais ajuda?** Me diga quais partes você gostaria de aprofundar.
